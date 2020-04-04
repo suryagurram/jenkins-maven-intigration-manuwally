@@ -1,0 +1,102 @@
+
+ cd /opt/
+ yum install java-1.8.0-openjdk -y
+ ll
+ wget https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+ ll
+   tar xvf apache-maven-3.6.3-bin.tar.gz
+ ll
+
+ vi /etc/profile.d/mavan.sh
+   export MAVEN_HOME=/opt/apache-maven-3.6.3
+   export PATH=$PATH:$MAVEN_HOME/bin
+
+       
+ source /etc/profile.d/mavan.sh
+  mvn --version
+ wget http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.33/bin/apache-tomcat-9.0.33.tar.gz
+   ll
+   tar xvf apache-tomcat-9.0.33.tar.gz
+   ll
+ sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+ sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+ sudo yum install jenkins -y
+   service jenkins start
+   service jenkins status
+ cat /var/lib/jenkins/secrets/initialAdminPassword
+ yum install git -y
+ ll
+ cd apache-tomcat-9.0.33/
+ cd conf/
+ ll
+ vi server.xml
+ cd ..
+ cd bin/
+ ll
+ ./shutdown.sh
+ ./startup.sh
+ ll
+ cd ..
+ ll
+ cd conf/
+ ll
+ vi tomcat-users.xml
+      <role rolename="manager-gui"/>
+	<role rolename="manager-script"/>
+	<role rolename="manager-jmx"/>
+	<role rolename="manager-status"/>
+	<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+	<user username="deployer" password="deployer" roles="manager-script"/>
+      <user username="tomcat" password="s3cret" roles="manager-gui"/>
+
+
+
+ vi server.xml
+ vi context.xml
+ cd ..
+ ll
+ cd bin/
+ ll
+ ./shutdown.sh
+ ./startup.sh
+ cd ..
+ cd we
+ cd webapps/
+ ll
+ cd manager/
+ ll
+ vi META-INF/
+ cd META-INF/
+ ll
+ vi context.xml
+ cd ..
+ ll
+ cd ..
+ ll
+ cd host-manager/
+ ll
+ cd META-INF/
+ ll
+ vi context.xml
+ cd ../..
+ cd ..
+ cd bin/
+ ll
+ ./shutdown.sh
+ ./startup.sh
+ cd ..
+ cd conf/
+ ll
+ vi tomcat-users.xml
+ cd ..
+ cd bin/
+ ll
+ ./shutdown.sh
+ ./startup.sh
+ cd ..
+ cd webapps/
+ ll
+ cd
+ cd /opt/
+ ll
+ history
